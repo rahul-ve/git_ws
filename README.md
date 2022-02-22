@@ -7,10 +7,17 @@
 
 - **.gitconfig file, it should be in your home directory, C:\Users\firstlast\\.gitconfig**
 
+Add the below config to the file, make sure to update the fields:
+
+- name
+- email
+- excludesfile  - create this file if it does not exist, see next section! Make sure the filepath is correct
+
+
 ```
 [user]
     name = firstlast
-    email = firstlast@ncver@edu.au
+    email = firstlast@example.com
 [log]
   date = relative
 
@@ -32,7 +39,7 @@
 
 ```
 
-- **.gitingnore_global,  it should be in your home directory, C:\Users\firstlast\\.gitignore_global    (create this file it does not exist)**
+- **.gitingnore_global,  it should be in your home directory, C:\Users\firstlast\\.gitignore_global    (create this file if it does not exist)**
 
 Add the below to the file
 ```
@@ -42,7 +49,7 @@ gig*
 
 #### Check git version  (keep it current)
 ```
- git --version                      # update if not current, some of the below commands/options will not work on old versions of git
+ git --version         # update if not current, some of the below commands/options will not work on old versions of git
 ```
 
 #### First time use, config
@@ -60,7 +67,7 @@ gig*
 
 ```
 cd /path/to/my/repo_folder
- git init -b main                                                          # initialising an empty git repository with the branch name as main
+ git init -b main                      # initialising an empty git repository with the branch name as main
 
 ```
 
@@ -69,22 +76,22 @@ cd /path/to/my/repo_folder
 
 ```
 # add a file to index
- git add  <filename>
+git add  <filename>
 
 # use the below with caution, might pick up files with sensitive information
- git add  .                            #  stages new files & modifications (no deletions)
- git add -A                             # stages all changes, including deletions
- git add -u                           # stages files modified & deleted
+git add  .                            #  stages new files & modifications (no deletions)
+git add -A                             # stages all changes, including deletions
+git add -u                           # stages files modified & deleted
 
- git  add  somefile*           # use wildcard characters to pick-up files with a pattern
- git add  somefolder\*.py                        # pick up files with "py" extension  in a subfolder
+git  add  somefile*           # use wildcard characters to pick-up files with a pattern
+git add  somefolder\*.py                        # pick up files with "py" extension  in a subfolder
 
 
 # we can stage hunks individually, patch mode
- git add -p
+git add -p
 
 # do interactive adding
- git add -i
+git add -i
 
 ```
 
@@ -93,13 +100,13 @@ cd /path/to/my/repo_folder
 
 ```
 git commit -m "some descriptive msg"
- git commit                                                            # this will open a text editor (if configured) to enter the commit message
+git commit                                  # this will open a text editor (if configured) to enter the commit message
 
- git commit -i                                                         # interactive mode, similar to the one used with git-add
- git commit -p                                                       # patch mode, similar to the one used with git-add
+git commit -i                               # interactive mode, similar to the one used with git-add
+git commit -p                               # patch mode, similar to the one used with git-add
 
 # amend a commit
- git commit --amend
+git commit --amend
 
 ```
 
@@ -116,7 +123,7 @@ git remote add origin  <REMOTE_URL>
 git push -u origin main                     # push local branch "main" to remote (origin is the default name given to remote repo) and tracks it
 
 # subsequent uploads
- git push                                             # no need to specify which remote and branch to push, most of the times there will only be one remote.
+git push                                # no need to specify which remote and branch to push, most of the times there will only be one remote.
 
 ```
 
@@ -128,17 +135,20 @@ git push -u origin main                     # push local branch "main" to remote
 
 ```
 git switch -c  branch1                 # this will create a new branch "branch1" from the current branch,
- git checkout -b branch1           # does the same as above, was the old way of doing the above operation, checkout also helps updated files in the working tree to match either index/remote, switch is purely for branch operations
+git checkout -b branch1           # does the same as above, was the old way of doing the above operation,
+                                   #  checkout also helps updated files in the working tree to match either index/remote,
+                                   # switch is purely for branch operations
 
 
- git switch  somebranch                   # switch to a different branch, NOTE if the local branch does not exist, and it a branch exists upstream, it will create a local branch and set it to track upstream branch (see --guess option in the manual)
+git switch  somebranch             # switch to a different branch, NOTE if the local branch does not exist, and if a branch exists upstream,
+                                   # it will create a local branch and set it to track upstream branch (see --guess option in the manual)
 
 # NOTE - above behaviour is consistent with how git-checkout works
 i.e.,  git checkout -b <branch> --track <remote>/<branch>
 
- git switch -                                  # toggle between two branches
+git switch -                                  # toggle between two branches
 
-#rename a branch
+# rename a branch
  git branch -m <newname>                         # change the current branch name
  git branch  -m <currentname> <newname>           # change any branch name
 
@@ -149,7 +159,7 @@ i.e.,  git checkout -b <branch> --track <remote>/<branch>
 
 
 # delete a branch
- git branch -d <branch name>              #  has to be merged either upstream or HEAD
+git branch -d <branch name>              #  has to be merged either upstream or HEAD
 
 
 
@@ -159,14 +169,14 @@ i.e.,  git checkout -b <branch> --track <remote>/<branch>
 #### Git diff
 
 ```
-git diff                             # between working tree and index
- git diff --staged              # OR --chached    -   between index and commit tree (ie, last commit  OR HEAD)
- git diff    HEAD                # between working dir and commit tree/HEAD
+git diff                        # between working tree and index
+git diff --staged              # OR --cached    -   between index and commit tree (i.e., last commit  OR HEAD)
+git diff    HEAD                # between working dir and commit tree/HEAD
 
 
-git diff commit1 commit2     # diff two commits
- git diff branch1..branch2              # diff two branches, order matters!!, use option --name-status
- git diff branch1                          # same as above, but instead of branch2, HEAD is used, ie, git diff branch1..HEAD
+git diff commit1 commit2          # diff two commits
+git diff branch1..branch2         # diff two branches, order matters!!, use option --name-status
+git diff branch1                  # same as above, but instead of branch2, HEAD is used, ie, git diff branch1..HEAD
 
 ```
 
@@ -174,10 +184,10 @@ git diff commit1 commit2     # diff two commits
 #### Git rm
 
 ```
-git rm --cached file1.txt                     # deletes the file from git NOT filesystem
+git rm --cached file1.txt                     # deletes the file from git NOT file system
 git commit -m "remove file1.txt"
 
-git rm file1.txt                               # CAUTION -  deletes the file from both git and filesystem
+git rm file1.txt                               # CAUTION -  deletes the file from both git and file system
 git commit -m "remove file1.txt"
 
 ```
@@ -196,11 +206,13 @@ NOTE - read [7.7 Git Tools - Reset Demystified](https://git-scm.com/book/en/v2/G
 ```
 
 # revert a commit, NOTE HEAD~ stands for parent of current commit, HEAD~3 is the 3rd ancestor
+
 git reset --soft HEAD~                  # move the HEAD back by one commit
- git reset --mixed HEAD~            # move the HEAD back by one commit and reset Index as well
- git reset --hard  HEAD~              # resets all three trees, BECAREFUL, this will cause data loss if used incorrectly
+git reset --mixed HEAD~            # move the HEAD back by one commit and reset Index as well
+git reset --hard  HEAD~              # resets all three trees, BECAREFUL, this will cause data loss if used incorrectly
 
 # undo changes to a file
+
 git restore --staged --worktree -- filename           # use --source option to specify where to get the file from
 
 # IF UNDOING BY USING restore, use the -p/--patch option, to selectively revert file contents!
