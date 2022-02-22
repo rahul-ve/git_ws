@@ -18,8 +18,8 @@
     plog = log --graph --decorate --pretty=format:\"%C(yellow)%h %C(green)%cr %C(blue)[Committer::Author]: %C(blue)%cn::%an %C(auto)%d %C(auto)%s\"
 
 [core]
-	excludesfile = C:\Users\firstlast\.gitignore_global
-	editor = code --wait
+    excludesfile = C:\Users\firstlast\.gitignore_global
+    editor = code --wait
 
 [merge]
     tool = vscode-merge
