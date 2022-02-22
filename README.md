@@ -5,7 +5,7 @@
 
 ### Config
 
-- **.gitconfig file, it should be in your home directory, C:\Users\firstlast\.gitconfig**
+- **.gitconfig file, it should be in your home directory, C:\Users\firstlast\\.gitconfig**
 
 ```
 [user]
@@ -32,7 +32,7 @@
 
 ```
 
-- **.gitingnore_global,  it should be in your home directory, C:\Users\firstlast\.gitignore_global    (create this file it does not exist)**
+- **.gitingnore_global,  it should be in your home directory, C:\Users\firstlast\\.gitignore_global    (create this file it does not exist)**
 
 Add the below to the file
 ```
