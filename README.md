@@ -39,7 +39,7 @@ Add the below config to the file, make sure to update the fields:
 
 ```
 
-- **.gitingnore_global,  it should be in your home directory, C:\Users\firstlast\\.gitignore_global    (create this file if it does not exist)**
+- **.gitignore_global,  it should be in your home directory, C:\Users\firstlast\\.gitignore_global    (create this file if it does not exist)**
 
 Add the below to the file
 ```
