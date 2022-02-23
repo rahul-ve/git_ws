@@ -37,7 +37,7 @@ git add <file path>   # if the file is at the root level, file name will suffice
 ### Commit code
 
 ```
-git commit -m "some descriptive msg"     # provide some description explain the code that was committed
+git commit -m "some descriptive msg"     # provide some description, explain the code that was committed
 ```
 - Refer to "[Git commit](README.md#git-commit)" section to see few more variations of `git commit` command
 - [Via VSCode interface](https://code.visualstudio.com/docs/editor/versioncontrol#_commit)

@@ -2,7 +2,7 @@
 
 
 - [Resources](#resources)
-- [What is a git respository](#what-is-a-git-respository)
+- [What is a git repository](#what-is-a-git-repository)
 - [Config](#config)
 - [Check git version  (keep it current)](#check-git-version--keep-it-current)
 - [First time use config](#first-time-use-config)
@@ -26,7 +26,7 @@
 
 
 
-#### What is a git respository
+#### What is a git repository
 
 - A Git repository (repo) is nothing more than a folder, the only difference between a git repo and normal folder is the presence of a hidden `.git` folder within the repo. This folder is where git stores the repo history. If this folder is deleted, the repo history is lost.
 
@@ -107,7 +107,7 @@ gig*
 #### Git init
 
 ```
-# change to the fodler where you want to place the repo
+# change to the folder where you want to place the repo
 cd \path\to\my\parent_folder
 
 # create a folder
@@ -116,8 +116,8 @@ mkdir <folder_name>              # e.g.: mkdir test
 # change to the folder
 cd \path\to\my\repo_folder         # e.g.: cd test
 
-# inititialise the folder as  a git repo
-git init -b main               # initialising an empty git repository with the branch name as main
+# initialize the folder as  a git repo
+git init -b main               # initializing an empty git repository with the branch name as main
 
 ```
 
@@ -201,7 +201,7 @@ git checkout -b branch1           # does the same as above, was the old way of d
 git switch  somebranch             # switch to a different branch, NOTE if the local branch does not exist, and if a branch exists upstream,
                                    # it will create a local branch and set it to track upstream branch (see --guess option in the manual)
 
-# NOTE - above behaviour is consistent with how git-checkout works
+# NOTE - above behavior is consistent with how git-checkout works
 i.e.,  git checkout -b <branch> --track <remote>/<branch>
 
 git switch -                                  # toggle between two branches
