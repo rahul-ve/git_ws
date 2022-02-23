@@ -1,9 +1,44 @@
-## Git commands
-
-- We will go through the below in the workshop
+## Git Basics <!-- omit in toc -->
 
 
-### Config
+- [Resources](#resources)
+- [What is a git respository](#what-is-a-git-respository)
+- [Config](#config)
+- [Check git version  (keep it current)](#check-git-version--keep-it-current)
+- [First time use config](#first-time-use-config)
+- [Git init](#git-init)
+- [Git add](#git-add)
+- [Git commit](#git-commit)
+- [Git push](#git-push)
+- [Git pull](#git-pull)
+- [Branch operations](#branch-operations)
+- [Git diff](#git-diff)
+- [Git rm](#git-rm)
+- [Undoing](#undoing)
+
+#### Resources
+
+- Official Manual – [Git - Reference (git-scm.com)](https://git-scm.com/documentation)
+- [Pro Git book](https://git-scm.com/book) (free and kept current, use the web version)
+- [VSCode version control docs](https://code.visualstudio.com/docs/editor/versioncontrol)
+- [Git cheat sheet](https://training.github.com/downloads/github-git-cheat-sheet.pdf)
+- [Short video snippets on how to use VSCode source control](https://www.youtube.com/c/Code/search?query=source%20control)
+
+
+
+#### What is a git respository
+
+- A Git repository (repo) is nothing more than a folder, the only difference between a git repo and normal folder is the presence of a hidden `.git` folder within the repo. This folder is where git stores the repo history. If this folder is deleted, the repo history is lost.
+
+
+&nbsp;
+
+We will go through the below in the workshop
+
+&nbsp;
+
+
+#### Config
 
 - **.gitconfig file, it should be in your home directory, C:\Users\firstlast\\.gitconfig**
 
@@ -11,7 +46,7 @@ Add the below config to the file, make sure to update the fields:
 
 - name
 - email
-- excludesfile  - create this file if it does not exist, see next section! Make sure the filepath is correct
+- excludesfile  - create this file if it does not exist, see next section! Make sure the **filepath** is correct
 
 
 ```
@@ -41,6 +76,12 @@ Add the below config to the file, make sure to update the fields:
 
 - **.gitignore_global,  it should be in your home directory, C:\Users\firstlast\\.gitignore_global    (create this file if it does not exist)**
 
+_Any file or folder in any git repo on the system that starts with `gig` will be automatically ignored by git!_
+
+**NOTE - This prefix is arbitrary, pick something that is unique to avoid accidentally excluding files/folders from git tracking.**
+
+Read more about [gitignore](https://git-scm.com/docs/gitignore) in the official docs.
+
 Add the below to the file
 ```
 gig*
@@ -52,7 +93,7 @@ gig*
  git --version         # update if not current, some of the below commands/options will not work on old versions of git
 ```
 
-#### First time use, config
+#### First time use config
 
 ```
  git config --global user.name "first.lastname"
@@ -66,8 +107,17 @@ gig*
 #### Git init
 
 ```
-cd /path/to/my/repo_folder
- git init -b main                      # initialising an empty git repository with the branch name as main
+# change to the fodler where you want to place the repo
+cd \path\to\my\parent_folder
+
+# create a folder
+mkdir <folder_name>              # e.g.: mkdir test
+
+# change to the folder
+cd \path\to\my\repo_folder         # e.g.: cd test
+
+# inititialise the folder as  a git repo
+git init -b main               # initialising an empty git repository with the branch name as main
 
 ```
 
@@ -84,7 +134,7 @@ git add -A                             # stages all changes, including deletions
 git add -u                           # stages files modified & deleted
 
 git  add  somefile*           # use wildcard characters to pick-up files with a pattern
-git add  somefolder\*.py                        # pick up files with "py" extension  in a subfolder
+git add  somefolder\*.py              # pick up files with "py" extension  in a subfolder
 
 
 # we can stage hunks individually, patch mode
@@ -126,6 +176,14 @@ git push -u origin main                     # push local branch "main" to remote
 git push                                # no need to specify which remote and branch to push, most of the times there will only be one remote.
 
 ```
+
+#### Git pull
+
+```
+git pull          # to bring in changes from remote repo
+
+```
+
 
 #### Branch operations
 
@@ -209,7 +267,7 @@ NOTE - read [7.7 Git Tools - Reset Demystified](https://git-scm.com/book/en/v2/G
 
 git reset --soft HEAD~                  # move the HEAD back by one commit
 git reset --mixed HEAD~            # move the HEAD back by one commit and reset Index as well
-git reset --hard  HEAD~              # resets all three trees, BECAREFUL, this will cause data loss if used incorrectly
+git reset --hard  HEAD~              # resets all three trees, CAUTION, this will cause data loss if used incorrectly
 
 # undo changes to a file
 
